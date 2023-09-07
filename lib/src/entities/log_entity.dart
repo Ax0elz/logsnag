@@ -6,7 +6,7 @@
 /// [tags] Event tags
 /// [notify] Whether to notify subscribers
 /// [parser] Parser to use
-/// [userId] User ID
+
 ///
 /// Example:
 /// ```dart
