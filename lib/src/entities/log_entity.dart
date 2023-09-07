@@ -35,7 +35,7 @@ class LogEntity {
     this.tags,
     this.notify,
     this.parser,
-    this.userId,
+    // this.userId,
   });
 
   /// Channel to Log to
@@ -91,7 +91,7 @@ class LogEntity {
   final String? parser;
 
   ///User ID
-  final String? userId;
+  // final String? userId;
 }
 
 /// Extension methods for [LogEntity]
@@ -107,7 +107,7 @@ extension LogEntityExtension on LogEntity {
       'tags': tags,
       'notify': notify,
       'parser': parser,
-      'user_id': userId,
+      // 'user_id': userId,
     };
   }
 }
