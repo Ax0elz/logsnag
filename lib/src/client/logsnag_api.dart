@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart';
 import 'package:logsnag/src/entities/insight_entity.dart';
@@ -23,13 +24,16 @@ class LogSnapApi {
     required Client httpClient,
     required String token,
     required String project,
+    String? userId,
   })  : _httpClient = httpClient,
         _token = token,
+        _userId = userId,
         _project = project;
 
   final Client _httpClient;
   final String _token;
   final String _project;
+  final String? _userId;
 
   static const String _host = 'https://api.logsnag.com/v1';
 
@@ -55,13 +59,15 @@ class LogSnapApi {
   /// Formats body to include project name
   /// [body] body to format
   String _formatBody(Map<String, dynamic> body) {
-    print({
-      ...body,
-      'project': _projectName,
-    });
+    log('body: ${jsonEncode({
+          ...body,
+          'project': _projectName,
+          if (_userId != null && body['user_id'] == null) 'user_id': _userId,
+        })}');
     return jsonEncode({
       ...body,
       'project': _projectName,
+      if (_userId != null && body['user_id'] == null) 'user_id': _userId,
     });
   }
 

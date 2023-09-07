@@ -46,13 +46,16 @@ class LogSnag {
   LogSnag({
     required String project,
     required String token,
+    String? userId,
     Client? httpClient,
   })  : _project = project,
+        _userId = userId,
         _token = token {
     _api = LogSnapApi(
       httpClient: httpClient ?? Client(),
       project: _project,
       token: _token,
+      userId: _userId,
     );
   }
 
@@ -66,6 +69,7 @@ class LogSnag {
   /// The LogSnag project reference
   /// https://docs.logsnag.com/api/authentication
   final String _project;
+  final String? _userId;
 
   /// Call the LogSnag API to publish a log
   /// https://docs.logsnag.com/endpoints/log
