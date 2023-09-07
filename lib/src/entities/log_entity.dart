@@ -102,12 +102,12 @@ extension LogEntityExtension on LogEntity {
     return {
       'channel': channel,
       'event': event,
-      'description': description,
-      'icon': icon,
-      'tags': tags,
-      'notify': notify,
+      if (description != null) 'description': description,
+      if (icon != null) 'icon': icon,
+      if (tags != null) 'tags': tags,
+      'notify': notify ?? false,
       'parser': parser,
-      'user_id': userId,
+      if (userId != null) 'user_id': userId,
     };
   }
 }
