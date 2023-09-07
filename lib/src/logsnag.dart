@@ -85,7 +85,7 @@ class LogSnag {
         description: description,
         icon: icon,
         tags: tags,
-        userId: userId,
+        // userId: userId,
         notify: notify,
         parser: 'text',
       ),
