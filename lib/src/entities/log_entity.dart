@@ -6,6 +6,7 @@
 /// [tags] Event tags
 /// [notify] Whether to notify subscribers
 /// [parser] Parser to use
+/// [userId] User ID
 ///
 /// Example:
 /// ```dart
@@ -34,6 +35,7 @@ class LogEntity {
     this.tags,
     this.notify,
     this.parser,
+    this.userId,
   });
 
   /// Channel to Log to
@@ -87,6 +89,9 @@ class LogEntity {
   /// Type: String
   /// Note: can be one of: markdown, text
   final String? parser;
+
+  ///User ID
+  final String? userId;
 }
 
 /// Extension methods for [LogEntity]
@@ -102,6 +107,7 @@ extension LogEntityExtension on LogEntity {
       'tags': tags,
       'notify': notify,
       'parser': parser,
+      'user_id': userId,
     };
   }
 }

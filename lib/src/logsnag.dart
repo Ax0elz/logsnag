@@ -76,6 +76,7 @@ class LogSnag {
     String? icon,
     Map<String, dynamic>? tags,
     bool? notify,
+    String? userId,
   }) {
     return _api.sendLog(
       LogEntity(
@@ -84,6 +85,7 @@ class LogSnag {
         description: description,
         icon: icon,
         tags: tags,
+        userId: userId,
         notify: notify,
         parser: 'text',
       ),
