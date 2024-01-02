@@ -38,8 +38,9 @@ import 'package:logsnag/src/entities.dart';
 /// See also:
 ///
 /// * [LogSnag]
-/// * [LogSnag.publish]
+/// * [LogSnag.log]
 /// * [LogSnag.insight]
+/// * [LogSnag.identify]
 ///
 class LogSnag {
   /// Create a new LogSnag instance
@@ -108,6 +109,22 @@ class LogSnag {
         title: title,
         value: value,
         icon: icon,
+      ),
+    );
+  }
+
+  /// Call the LogSnag API to publish an identify
+  /// https://docs.logsnag.com/endpoints/identify
+  Future<void> identify({
+    String? project,
+    String? userId,
+    Map<String, dynamic>? properties,
+  }) {
+    return _api.sendIdentify(
+      IdentifyEntity(
+        project: project,
+        userId: userId,
+        properties: properties,
       ),
     );
   }

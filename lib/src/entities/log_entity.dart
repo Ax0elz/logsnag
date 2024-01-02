@@ -97,7 +97,7 @@ class LogEntity {
 /// Extension methods for [LogEntity]
 /// [LogEntity] to JSON
 extension LogEntityExtension on LogEntity {
-  /// Converts [InsightEntity] to JSON
+  /// Converts [LogEntity] to JSON
   Map<String, dynamic> toJson() {
     return {
       'channel': channel,

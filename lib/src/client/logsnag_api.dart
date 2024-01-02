@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:http/http.dart';
+import 'package:logsnag/src/entities/identify_entity.dart';
 import 'package:logsnag/src/entities/insight_entity.dart';
 import 'package:logsnag/src/entities/log_entity.dart';
 
@@ -92,6 +93,21 @@ class LogSnapApi {
   Future<void> sendLog(LogEntity body) async {
     final response = await _send(
       Request('POST', Uri.parse('$_host/log'))
+        ..body = _formatBody(
+          body.toJson(),
+        ),
+    );
+    if (response.statusCode == 200) {
+      // success 🎉
+      return;
+    }
+    throw LogSnagApiException(response: response);
+  }
+
+  /// Sends identify to LogSnag
+  Future<void> sendIdentify(IdentifyEntity body) async {
+    final response = await _send(
+      Request('POST', Uri.parse('$_host/identify'))
         ..body = _formatBody(
           body.toJson(),
         ),
